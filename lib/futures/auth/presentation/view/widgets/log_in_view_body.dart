@@ -14,7 +14,7 @@ class LogInViewBody extends StatelessWidget {
         children: [
           Container(
             width: 80,
-            height: 80,
+            height: 89,
             decoration: BoxDecoration(
               color: Colors.white,
               image: DecorationImage(

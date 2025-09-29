@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:nasa_app/core/utils/app_assets.dart';
-import 'package:nasa_app/core/utils/app_text_style.dart';
+import 'package:nasa_app/core/resources/app_assets.dart';
+import 'package:nasa_app/core/resources/app_text_style.dart';
+import 'package:nasa_app/futures/auth/presentation/view/widgets/coustem_auth_disighin.dart';
 import 'package:nasa_app/futures/auth/presentation/view/widgets/coustem_log_in_form.dart';
+import 'package:nasa_app/futures/auth/presentation/view/widgets/dont_have_account.dart';
 
 class LogInViewBody extends StatelessWidget {
   const LogInViewBody({super.key});
@@ -12,19 +14,14 @@ class LogInViewBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: ListView(
         children: [
-          Container(
-            width: 80,
-            height: 89,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              image: DecorationImage(
-                image: AssetImage(Assets.assetsImagesPlant),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          Text('LogIn', style: AppTextStyle.poppinsow400siz),
+          SizedBox(height: 40),
+
+          CoustemAuthDighin(text: 'LogIn'),
+          SizedBox(height: 25),
           CustemLogInForm(),
+          SizedBox(height: 5),
+          DontHaveAccount(),
+          SizedBox(height: 5),
         ],
       ),
     );

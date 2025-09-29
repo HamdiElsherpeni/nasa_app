@@ -1,4 +1,4 @@
-import 'package:nasa_app/core/utils/app_assets.dart';
+import 'package:nasa_app/core/resources/app_assets.dart';
 
 class OnBordingModel {
   final String imagePath;

@@ -6,6 +6,9 @@ class SinUpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: SafeArea(child: SinUpViewBody()),);
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 22, 11, 55),
+      body: SafeArea(child: SinUpViewBody()),
+    );
   }
 }

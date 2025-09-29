@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nasa_app/core/database/my_cache_helper.dart';
 import 'package:nasa_app/core/functions/coustem_navigate.dart';
 import 'package:nasa_app/core/routes/app_router.dart';
-import 'package:nasa_app/core/utils/app_assets.dart';
+import 'package:nasa_app/core/resources/app_assets.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -16,7 +16,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   void initState() {
     super.initState();
-    delayedNvigation(context, AppRouter.onBording);
+    checkVisited();
   }
 
   Future<void> checkVisited() async {
@@ -25,6 +25,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       delayedNvigation(context, AppRouter.logInView);
     } else {
       delayedNvigation(context, AppRouter.onBording);
+     
     }
   }
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nasa_app/core/utils/app_text_style.dart';
+import 'package:nasa_app/core/resources/app_text_style.dart';
 import 'package:nasa_app/futures/on_bording/data/model/on_bording_model.dart';
 
 class OnBordingViewBody extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nasa_app/core/routes/app_router.dart';
-import 'package:nasa_app/core/utils/app_colors.dart';
+import 'package:nasa_app/core/resources/app_colors.dart';
 
 class NasaSpace extends StatelessWidget {
   const NasaSpace({super.key});

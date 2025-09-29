@@ -36,7 +36,7 @@ class CoustemTextFormFailed extends StatelessWidget {
       onChanged: onChanged,
       onFieldSubmitted: onFieldSubmitted,
       obscureText: obscure ?? false,
-      style: const TextStyle(color: Colors.black, fontSize: 12),
+      style: const TextStyle(color: Colors.white, fontSize: 12),
       decoration: InputDecoration(
         hintText: hent,
         hintStyle: const TextStyle(color: Colors.grey),

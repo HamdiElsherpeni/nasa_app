@@ -1,0 +1,40 @@
+import 'package:flutter/material.dart';
+import 'package:nasa_app/core/functions/coustem_navigate.dart';
+import 'package:nasa_app/core/routes/app_router.dart';
+
+class AlredyHaveanAcunt extends StatelessWidget {
+  const AlredyHaveanAcunt({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return  SizedBox(
+            height: 30,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Already have an account ?',
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.grey,
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    coustemNavigatPush(context, AppRouter.logInView);
+                  },
+                  child: Text(
+                    'Sign In',
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.normal,
+                      color: const Color.fromARGB(255, 120, 119, 119),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+  }
+}

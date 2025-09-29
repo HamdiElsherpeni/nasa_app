@@ -46,7 +46,7 @@ class _OnBordingViewState extends State<OnBordingView> {
                         ),
                         TextButton(
                           onPressed: () {
-                            coustemNavigatPushReplace(context, AppRouter.sinUpView);
+                            coustemNavigatPushReplace(context, AppRouter.logInView);
                           },
                           child: Text(
                             'LogIn Now',

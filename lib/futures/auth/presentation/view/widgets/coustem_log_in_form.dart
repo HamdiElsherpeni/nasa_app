@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:nasa_app/core/database/my_cache_helper.dart';
 import 'package:nasa_app/core/functions/coustem_navigate.dart';
 import 'package:nasa_app/core/routes/app_router.dart';
+import 'package:nasa_app/core/widgets/coustem_eleveted_butten.dart';
 import 'package:nasa_app/core/widgets/coustem_text_form_filed.dart';
 
 class CustemLogInForm extends StatefulWidget {
@@ -52,6 +54,14 @@ class _CustemLogInFormState extends State<CustemLogInForm> {
                 style: TextStyle(fontSize: 10, color: Colors.grey),
               ),
             ),
+          ),
+          SizedBox(height: 40),
+          CoustemElevetedBoutten(
+            text: 'Sign In',
+            onPressed: () {
+              coustemNavigatPushReplace(context, AppRouter.homeView);
+               SharedPreferenceManager.saveIsViset(true);
+            },
           ),
         ],
       ),

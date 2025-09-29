@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nasa_app/core/functions/coustem_navigate.dart';
 import 'package:nasa_app/core/routes/app_router.dart';
 
@@ -14,7 +14,7 @@ class DontHaveAccount extends StatelessWidget {
         Text(
           'Don’t have an account ?',
           style: TextStyle(
-            fontSize: 10,
+            fontSize: 12.sp, // حجم نص متجاوب
             color: const Color.fromARGB(255, 77, 76, 76),
           ),
         ),
@@ -24,7 +24,10 @@ class DontHaveAccount extends StatelessWidget {
           },
           child: Text(
             'Sign Up',
-            style: TextStyle(fontSize: 10, color: Colors.grey),
+            style: TextStyle(
+              fontSize: 12.sp, // حجم نص متجاوب
+              color: Colors.grey,
+            ),
           ),
         ),
       ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nasa_app/core/database/my_cache_helper.dart';
 import 'package:nasa_app/core/functions/coustem_navigate.dart';
 import 'package:nasa_app/core/routes/app_router.dart';
@@ -14,7 +15,7 @@ class OnBordingView extends StatefulWidget {
 }
 
 class _OnBordingViewState extends State<OnBordingView> {
-  PageController _controller = PageController(initialPage: 0);
+  final PageController _controller = PageController(initialPage: 0);
   int curintIndex = 0;
 
   @override
@@ -22,7 +23,7 @@ class _OnBordingViewState extends State<OnBordingView> {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          padding: EdgeInsets.symmetric(horizontal: 16.w), // متجاوب
           child: Column(
             children: [
               Expanded(
@@ -30,8 +31,9 @@ class _OnBordingViewState extends State<OnBordingView> {
                   controller: _controller,
                   onPageChanged: (index) {
                     SharedPreferenceManager.saveIsViset(true);
-                    setState(() {});
-                    curintIndex = index;
+                    setState(() {
+                      curintIndex = index;
+                    });
                   },
                 ),
               ),
@@ -43,14 +45,20 @@ class _OnBordingViewState extends State<OnBordingView> {
                           onPressed: () {
                             coustemNavigatPushReplace(context, AppRouter.sinUpView);
                           },
+                          height: 50.h, // إضافة ارتفاع متجاوب
+                          fontSize: 18.sp, // حجم نص متجاوب
                         ),
+                        SizedBox(height: 12.h),
                         TextButton(
                           onPressed: () {
                             coustemNavigatPushReplace(context, AppRouter.logInView);
                           },
                           child: Text(
                             'LogIn Now',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16.sp, // حجم نص متجاوب
+                            ),
                           ),
                         ),
                       ],
@@ -63,8 +71,10 @@ class _OnBordingViewState extends State<OnBordingView> {
                           curve: Curves.bounceIn,
                         );
                       },
+                      height: 50.h,
+                      fontSize: 18.sp,
                     ),
-              SizedBox(height: 30),
+              SizedBox(height: 30.h),
             ],
           ),
         ),

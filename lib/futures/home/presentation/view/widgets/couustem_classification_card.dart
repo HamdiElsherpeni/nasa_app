@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ClassificationCard extends StatelessWidget {
-  // إضافة iconBackgroundColor كـ خاصية مطلوبة من نوع Color
   final String title; 
   final String totalCount;
   final String percentageChange;
   final String changeDescription;
   final IconData iconData;
-  final Color iconBackgroundColor; // الخاصية الجديدة المطلوبة
+  final Color iconBackgroundColor;
 
   const ClassificationCard({
     super.key,
@@ -16,32 +16,28 @@ class ClassificationCard extends StatelessWidget {
     required this.percentageChange,
     required this.changeDescription,
     required this.iconData,
-    required this.iconBackgroundColor, // أصبحت مطلوبة
+    required this.iconBackgroundColor,
   });
 
   @override
   Widget build(BuildContext context) {
-    // الألوان الثابتة لتصميم البطاقة
     const Color darkBackgroundColor = Color(0xFF1A1C2C);
     const Color primaryTextColor = Colors.white;
     const Color secondaryTextColor = Color(0xFF6C6F82);
-    
-    // تحديد لون النسبة المئوية
+
     final bool isPositive = percentageChange.startsWith('+') || percentageChange.endsWith('h');
     final Color increaseColor = isPositive ? const Color(0xFF5DD974) : Colors.red;
 
-    // تم حذف المنطق الشرطي لتحديد لون الخلفية هنا، لأن اللون أصبح يتم تمريره
-
     return Container(
-      padding: const EdgeInsets.all(16.0),
+      padding: EdgeInsets.all(16.w), // متجاوب
       decoration: BoxDecoration(
         color: darkBackgroundColor,
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.circular(12.r), // متجاوب
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.3),
-            blurRadius: 10,
-            offset: const Offset(0, 5),
+            blurRadius: 10.r, // متجاوب
+            offset: Offset(0, 5.h), // متجاوب
           ),
         ],
       ),
@@ -49,46 +45,43 @@ class ClassificationCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // الجانب الأيسر: محتوى النص
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 title, 
-                style: const TextStyle(
+                style: TextStyle(
                   color: secondaryTextColor,
-                  fontSize: 14,
+                  fontSize: 14.sp, // متجاوب
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              const SizedBox(height: 4),
-              // الرقم الرئيسي
+              SizedBox(height: 4.h), // متجاوب
               Text(
                 totalCount,
-                style: const TextStyle(
+                style: TextStyle(
                   color: primaryTextColor,
-                  fontSize: 32,
+                  fontSize: 32.sp, // متجاوب
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 8),
-              // النسبة المئوية والتفاصيل
+              SizedBox(height: 8.h), // متجاوب
               Row(
                 children: [
                   Text(
                     percentageChange,
                     style: TextStyle(
                       color: increaseColor,
-                      fontSize: 14,
+                      fontSize: 14.sp, // متجاوب
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(width: 4),
+                  SizedBox(width: 4.w), // متجاوب
                   Text(
                     changeDescription,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: secondaryTextColor,
-                      fontSize: 14,
+                      fontSize: 14.sp, // متجاوب
                       fontWeight: FontWeight.w400,
                     ),
                   ),
@@ -96,19 +89,17 @@ class ClassificationCard extends StatelessWidget {
               ),
             ],
           ),
-
-          // الجانب الأيمن: أيقونة الـ Container
           Container(
-            width: 56,
-            height: 56,
+            width: 56.w, // متجاوب
+            height: 56.h, // متجاوب
             decoration: BoxDecoration(
-              color: iconBackgroundColor, // استخدام الخاصية التي تم تمريرها
-              borderRadius: BorderRadius.circular(12.0),
+              color: iconBackgroundColor,
+              borderRadius: BorderRadius.circular(12.r), // متجاوب
             ),
             child: Icon(
               iconData,
               color: primaryTextColor,
-              size: 32,
+              size: 32.sp, // متجاوب
             ),
           ),
         ],

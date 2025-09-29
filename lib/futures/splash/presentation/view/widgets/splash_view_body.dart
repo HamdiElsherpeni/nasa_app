@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nasa_app/core/database/my_cache_helper.dart';
 import 'package:nasa_app/core/functions/coustem_navigate.dart';
 import 'package:nasa_app/core/routes/app_router.dart';
@@ -13,7 +14,6 @@ class SplashViewBody extends StatefulWidget {
 
 class _SplashViewBodyState extends State<SplashViewBody> {
   @override
-  @override
   void initState() {
     super.initState();
     checkVisited();
@@ -22,19 +22,26 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   Future<void> checkVisited() async {
     bool isVisit = await SharedPreferenceManager.getIsViset() ?? false;
     if (isVisit) {
-      delayedNvigation(context, AppRouter.logInView);
+      delayedNavigation(context, AppRouter.logInView);
     } else {
-      delayedNvigation(context, AppRouter.onBording);
-     
+      delayedNavigation(context, AppRouter.onBording);
     }
   }
 
+  @override
   Widget build(BuildContext context) {
-    return Center(child: Image.asset(Assets.assetsImagesSplashImage));
+    return Center(
+      child: Image.asset(
+        Assets.assetsImagesSplashImage,
+        width: 200.w,  // عرض متجاوب
+        height: 200.h, // ارتفاع متجاوب
+        fit: BoxFit.contain,
+      ),
+    );
   }
 }
 
-void delayedNvigation(context, String path) {
+void delayedNavigation(BuildContext context, String path) {
   Future.delayed(Duration(seconds: 2), () {
     coustemNavigatPushReplace(context, path);
   });

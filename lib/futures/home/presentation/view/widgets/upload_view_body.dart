@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nasa_app/futures/home/presentation/view/widgets/coustem_app_bar.dart';
+import 'package:nasa_app/futures/home/presentation/view/widgets/recenrly_upload_list.dart';
+import 'package:nasa_app/futures/home/presentation/view/widgets/upload_widgets/coustem_clssification_parametters.dart';
+import 'package:nasa_app/futures/home/presentation/view/widgets/upload_widgets/coustem_cv_uplod_card.dart';
 
 class UploadViewBody extends StatelessWidget {
   const UploadViewBody({super.key});
@@ -8,7 +12,7 @@ class UploadViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: Column(
+      child: ListView(
         children: [
           CoustemAppBar(
             context:context,
@@ -16,6 +20,12 @@ class UploadViewBody extends StatelessWidget {
             subTitel:
                 'Upload CSV files containing Kepler telescope transit data for classification',
           ),
+          CsvUploadWidget(),
+          SizedBox(height: 20.h,),
+          ClassificationParametersWidget(),
+          SizedBox(height: 20.h,),
+          RecentUploadsList(),
+
         ],
       ),
     );

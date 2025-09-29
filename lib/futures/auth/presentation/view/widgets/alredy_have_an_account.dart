@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nasa_app/core/functions/coustem_navigate.dart';
 import 'package:nasa_app/core/routes/app_router.dart';
 
@@ -8,14 +9,14 @@ class AlredyHaveanAcunt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  SizedBox(
-            height: 30,
+            height: 40.h,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   'Already have an account ?',
                   style: TextStyle(
-                    fontSize: 10,
+                    fontSize: 13.sp,
                     fontWeight: FontWeight.normal,
                     color: Colors.grey,
                   ),
@@ -27,12 +28,13 @@ class AlredyHaveanAcunt extends StatelessWidget {
                   child: Text(
                     'Sign In',
                     style: TextStyle(
-                      fontSize: 10,
+                      fontSize: 13.sp,
                       fontWeight: FontWeight.normal,
                       color: const Color.fromARGB(255, 120, 119, 119),
                     ),
                   ),
                 ),
+                SizedBox(height: 10.h,)
               ],
             ),
           );

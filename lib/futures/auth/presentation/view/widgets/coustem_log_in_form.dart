@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nasa_app/core/database/my_cache_helper.dart';
 import 'package:nasa_app/core/functions/coustem_navigate.dart';
 import 'package:nasa_app/core/routes/app_router.dart';
@@ -27,7 +28,7 @@ class _CustemLogInFormState extends State<CustemLogInForm> {
             hent: 'You@gmail.com',
             onChanged: (emailAdders) {},
           ),
-          SizedBox(height: 30),
+          SizedBox(height: 30.h), // متجاوب
           CoustemTextFormFailed(
             leble: 'Password',
             hent: '*********',
@@ -39,8 +40,8 @@ class _CustemLogInFormState extends State<CustemLogInForm> {
                 setState(() {});
               },
               icon: password
-                  ? Icon(Icons.visibility_off)
-                  : Icon(Icons.visibility),
+                  ? Icon(Icons.visibility_off, size: 20.sp)
+                  : Icon(Icons.visibility, size: 20.sp),
             ),
           ),
           Align(
@@ -51,17 +52,22 @@ class _CustemLogInFormState extends State<CustemLogInForm> {
               },
               child: Text(
                 'Forgot Password ?',
-                style: TextStyle(fontSize: 10, color: Colors.grey),
+                style: TextStyle(
+                  fontSize: 12.sp, // حجم نص متجاوب
+                  color: Colors.grey,
+                ),
               ),
             ),
           ),
-          SizedBox(height: 40),
+          SizedBox(height: 40.h), // متجاوب
           CoustemElevetedBoutten(
             text: 'Sign In',
             onPressed: () {
               coustemNavigatPushReplace(context, AppRouter.homeView);
-               SharedPreferenceManager.saveIsViset(true);
+              SharedPreferenceManager.saveIsViset(true);
             },
+            height: 60.h,    // ارتفاع متجاوب
+            fontSize: 18.sp, // حجم نص متجاوب
           ),
         ],
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nasa_app/core/resources/app_text_style.dart';
 import 'package:nasa_app/futures/home/presentation/view/widgets/coustem_active_model.dart';
 import 'package:nasa_app/futures/home/presentation/view/widgets/coustem_app_bar.dart';
@@ -22,7 +23,7 @@ class _CoustemHomeAppBarState extends State<CoustemHomeAppBar>
           subTitel: 'Real-time analysis of Kepler telescope transit data',
         ),
         CoustemActiveModel(),
-        const SizedBox(height: 8),
+         SizedBox(height: 8.h),
 
         Divider(
           color: Colors.grey, // لون الخط

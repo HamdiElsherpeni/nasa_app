@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nasa_app/futures/home/presentation/view/widgets/couustem_classification_card.dart';
 
 class CoustemHomeList extends StatelessWidget {
@@ -22,8 +23,8 @@ class CoustemHomeList extends StatelessWidget {
           ),
         ),
 
-        const SliverToBoxAdapter(
-          child: SizedBox(height: 16),
+         SliverToBoxAdapter(
+          child: SizedBox(height: 16.h),
         ), // فاصل بين البطاقات
         // البطاقة 2: Confirmed Exoplanets (اللون الأخضر)
         SliverToBoxAdapter(
@@ -37,8 +38,9 @@ class CoustemHomeList extends StatelessWidget {
           ),
         ),
 
-        const SliverToBoxAdapter(child: SizedBox(height: 16)),
-
+         SliverToBoxAdapter(
+          child: SizedBox(height: 16.h),
+        ),
         // البطاقة 3: Model Accuracy (اللون البنفسجي)
         SliverToBoxAdapter(
           child: ClassificationCard(
@@ -51,7 +53,9 @@ class CoustemHomeList extends StatelessWidget {
           ),
         ),
 
-        const SliverToBoxAdapter(child: SizedBox(height: 16)),
+          SliverToBoxAdapter(
+          child: SizedBox(height: 16.h),
+        ),
 
         // البطاقة 4: Processing Queue (اللون البرتقالي)
         SliverToBoxAdapter(
@@ -65,7 +69,9 @@ class CoustemHomeList extends StatelessWidget {
           ),
         ),
 
-        const SliverToBoxAdapter(child: SizedBox(height: 24)),
+          SliverToBoxAdapter(
+          child: SizedBox(height: 24.h),
+        ),
       ],
     );
   }

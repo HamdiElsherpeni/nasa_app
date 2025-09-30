@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nasa_app/core/resources/constnts.dart';
 import 'package:nasa_app/futures/home/presentation/view/widgets/coustem_drawer.dart';
-import 'package:nasa_app/futures/home/presentation/view/widgets/setteing_view_body.dart';
+import 'package:nasa_app/futures/home/presentation/view/widgets/setting_widgets/setteing_view_body.dart';
 
 class SetteingView extends StatelessWidget {
   const SetteingView({super.key});

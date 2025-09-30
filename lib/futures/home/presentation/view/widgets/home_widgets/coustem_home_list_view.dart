@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nasa_app/futures/home/presentation/view/widgets/couustem_classification_card.dart';
+import 'package:nasa_app/futures/home/presentation/view/widgets/home_widgets/couustem_classification_card.dart';
 
 class CoustemHomeList extends StatelessWidget {
   const CoustemHomeList({super.key});

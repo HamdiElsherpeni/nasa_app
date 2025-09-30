@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nasa_app/futures/home/presentation/view/widgets/coustem_home_app_bar.dart';
-import 'package:nasa_app/futures/home/presentation/view/widgets/coustem_home_list_view.dart';
-import 'package:nasa_app/futures/home/presentation/view/widgets/couustem_classification_card.dart';
+import 'package:nasa_app/futures/home/presentation/view/widgets/home_widgets/coustem_home_app_bar.dart';
+import 'package:nasa_app/futures/home/presentation/view/widgets/home_widgets/coustem_home_list_view.dart';
+import 'package:nasa_app/futures/home/presentation/view/widgets/home_widgets/couustem_classification_card.dart';
 import 'package:nasa_app/futures/home/presentation/view/widgets/recenrly_upload_list.dart';
 
 class HomeViewBody extends StatelessWidget {

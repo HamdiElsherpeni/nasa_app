@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nasa_app/core/resources/constnts.dart';
 import 'package:nasa_app/futures/home/presentation/view/widgets/coustem_drawer.dart';
-import 'package:nasa_app/futures/home/presentation/view/widgets/result_view_body.dart';
+import 'package:nasa_app/futures/home/presentation/view/widgets/result_widgets/result_view_body.dart';
 
 class ResultView extends StatelessWidget {
   const ResultView({super.key});

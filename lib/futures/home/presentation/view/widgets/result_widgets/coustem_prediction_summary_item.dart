@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 
 class PredictionSummaryWidget extends StatelessWidget {
   final int count;
@@ -56,7 +57,7 @@ class PredictionSummaryWidget extends StatelessWidget {
             ),
             SizedBox(height: 20.h),
             Text(
-              '$count',
+              NumberFormat.decimalPattern().format(count),
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 48.sp,

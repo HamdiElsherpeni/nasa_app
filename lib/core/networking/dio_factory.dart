@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:nasa_app/core/networking/api_endpoints.dart';
 import 'package:nasa_app/core/database/my_cache_helper.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class DioFactory {
   DioFactory._();

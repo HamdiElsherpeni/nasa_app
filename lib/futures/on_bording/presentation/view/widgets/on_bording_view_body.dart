@@ -22,7 +22,7 @@ class OnBordingViewBody extends StatelessWidget {
             SizedBox(height: 20.h), // متجاوب
             Container(
               height: 280.h, // متجاوب
-              width: 330.w,  // متجاوب
+              width: 370.w,  // متجاوب
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(onBordingData[indx].imagePath),
@@ -30,12 +30,12 @@ class OnBordingViewBody extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 40.h), // بدل MediaQuery استخدمنا ارتفاع متجاوب
+            SizedBox(height: 50.h), // بدل MediaQuery استخدمنا ارتفاع متجاوب
             Text(
               onBordingData[indx].titel,
               textAlign: TextAlign.center,
               style: AppTextStyle.poppinsow400siz.copyWith(
-                fontSize: 20.sp, // حجم نص متجاوب
+                fontSize: 40.sp, // حجم نص متجاوب
               ),
               maxLines: 2,
             ),

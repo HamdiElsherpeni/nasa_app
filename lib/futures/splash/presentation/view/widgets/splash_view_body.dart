@@ -22,7 +22,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   Future<void> checkVisited() async {
     bool isVisit = await SharedPreferenceManager.getIsViset() ?? false;
     if (isVisit) {
-      delayedNavigation(context, AppRouter.logInView);
+      delayedNavigation(context, AppRouter.onBording);
     } else {
       delayedNavigation(context, AppRouter.onBording);
     }
@@ -33,8 +33,8 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     return Center(
       child: Image.asset(
         Assets.assetsImagesSplashImage,
-        width: 200.w,  // عرض متجاوب
-        height: 200.h, // ارتفاع متجاوب
+        width: 250.w,  // عرض متجاوب
+        height: 250.h, // ارتفاع متجاوب
         fit: BoxFit.contain,
       ),
     );

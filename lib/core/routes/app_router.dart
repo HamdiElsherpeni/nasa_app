@@ -3,9 +3,9 @@ import 'package:nasa_app/futures/auth/presentation/view/forget_password_view.dar
 import 'package:nasa_app/futures/auth/presentation/view/log_in_view.dart';
 import 'package:nasa_app/futures/auth/presentation/view/sin_up_view.dart';
 import 'package:nasa_app/futures/home/presentation/view/home_view.dart';
-import 'package:nasa_app/futures/home/presentation/view/result_view.dart';
-import 'package:nasa_app/futures/home/presentation/view/setteing_view.dart';
-import 'package:nasa_app/futures/home/presentation/view/uploda_view.dart';
+import 'package:nasa_app/futures/result/presentation/view/result_view.dart';
+import 'package:nasa_app/futures/setting/presentation/view/setteing_view.dart';
+import 'package:nasa_app/futures/upload/presentation/view/uploda_view.dart';
 import 'package:nasa_app/futures/on_bording/presentation/view/on_bording_view.dart';
 import 'package:nasa_app/futures/splash/presentation/view/splash_view.dart';
 

@@ -4,9 +4,3 @@ class ApiEndPoint {
   static const String signUp = 'Auth/register';
 }
 
-class ApiKey {
-  static const String status = 'status';
-  static const String errorMassege = 'ErrorMassege';
-  static const String email = '';
-  static const String password = '';
-}

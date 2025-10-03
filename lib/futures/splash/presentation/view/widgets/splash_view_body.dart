@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nasa_app/core/database/my_cache_helper.dart';
+import 'package:nasa_app/core/database/prefs_constants.dart';
 import 'package:nasa_app/core/functions/coustem_navigate.dart';
 import 'package:nasa_app/core/routes/app_router.dart';
 import 'package:nasa_app/core/resources/app_assets.dart';
@@ -20,9 +21,10 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   }
 
   Future<void> checkVisited() async {
-    bool isVisit = await SharedPreferenceManager.getIsViset() ?? false;
+    bool isVisit =
+        await SharedPrefHelper.getBool(PrefsConstants.onBoarding) ?? false;
     if (isVisit) {
-      delayedNavigation(context, AppRouter.onBording);
+      delayedNavigation(context, AppRouter.logInView);
     } else {
       delayedNavigation(context, AppRouter.onBording);
     }
@@ -33,7 +35,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     return Center(
       child: Image.asset(
         Assets.assetsImagesSplashImage,
-        width: 250.w,  // عرض متجاوب
+        width: 250.w, // عرض متجاوب
         height: 250.h, // ارتفاع متجاوب
         fit: BoxFit.contain,
       ),

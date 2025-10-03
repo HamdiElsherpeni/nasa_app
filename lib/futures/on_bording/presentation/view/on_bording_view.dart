@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nasa_app/core/database/my_cache_helper.dart';
+import 'package:nasa_app/core/database/prefs_constants.dart';
 import 'package:nasa_app/core/functions/coustem_navigate.dart';
 import 'package:nasa_app/core/routes/app_router.dart';
 import 'package:nasa_app/core/widgets/coustem_eleveted_butten.dart';
@@ -30,7 +31,7 @@ class _OnBordingViewState extends State<OnBordingView> {
                 child: OnBordingViewBody(
                   controller: _controller,
                   onPageChanged: (index) {
-                    SharedPreferenceManager.saveIsViset(true);
+                    SharedPrefHelper.setData(PrefsConstants.onBoarding, true);
                     setState(() {
                       curintIndex = index;
                     });
@@ -43,7 +44,10 @@ class _OnBordingViewState extends State<OnBordingView> {
                         CoustemElevetedBoutten(
                           text: 'Create Account',
                           onPressed: () {
-                            coustemNavigatPushReplace(context, AppRouter.sinUpView);
+                            coustemNavigatPushReplace(
+                              context,
+                              AppRouter.sinUpView,
+                            );
                           },
                           height: 50.h, // إضافة ارتفاع متجاوب
                           fontSize: 18.sp, // حجم نص متجاوب
@@ -51,7 +55,10 @@ class _OnBordingViewState extends State<OnBordingView> {
                         SizedBox(height: 12.h),
                         TextButton(
                           onPressed: () {
-                            coustemNavigatPushReplace(context, AppRouter.logInView);
+                            coustemNavigatPushReplace(
+                              context,
+                              AppRouter.logInView,
+                            );
                           },
                           child: Text(
                             'LogIn Now',

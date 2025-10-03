@@ -8,3 +8,7 @@ void coustemNavigatPush(context,String path) {
      GoRouter.of(context).pushReplacement(path);
        
   }
+
+  void customNavigatPop(context) {
+    GoRouter.of(context).pop();
+  }

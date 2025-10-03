@@ -5,6 +5,7 @@ import 'package:nasa_app/core/database/prefs_constants.dart';
 import 'package:nasa_app/core/functions/coustem_navigate.dart';
 import 'package:nasa_app/core/routes/app_router.dart';
 import 'package:nasa_app/core/resources/app_assets.dart';
+import 'package:nasa_app/main.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -23,10 +24,13 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   Future<void> checkVisited() async {
     bool isVisit =
         await SharedPrefHelper.getBool(PrefsConstants.onBoarding) ?? false;
-    if (isVisit) {
-      delayedNavigation(context, AppRouter.logInView);
+    if (isLoggedIn) {
+      delayedNavigation(context, AppRouter.homeView);
     } else {
-      delayedNavigation(context, AppRouter.onBording);
+      isVisit
+          ? delayedNavigation(context, AppRouter.logInView)
+          : delayedNavigation(context, AppRouter.onBording);
+      
     }
   }
 

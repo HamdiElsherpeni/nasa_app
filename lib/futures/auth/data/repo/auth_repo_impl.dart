@@ -1,5 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:nasa_app/core/database/my_cache_helper.dart';
+import 'package:nasa_app/core/database/prefs_constants.dart';
 import 'package:nasa_app/core/networking/api_endpoints.dart';
 import 'package:nasa_app/core/networking/api_failure.dart';
 import 'package:nasa_app/core/networking/api_services.dart';
@@ -22,7 +24,9 @@ class AuthRepoImpl implements AuthRepo {
         endpoint: ApiEndPoint.signIn,
         data: signInRequestBody.toJson(),
       );
-      return right(SignInResponseBody.fromJson(result));
+      var data = SignInResponseBody.fromJson(result);
+      SharedPrefHelper.setData(PrefsConstants.token, data.id);
+      return right(data);
     } on DioException catch (e) {
       return left(ServerFailure.fromDioException(e));
     } catch (e) {
@@ -39,7 +43,10 @@ class AuthRepoImpl implements AuthRepo {
         endpoint: ApiEndPoint.signUp,
         data: signUpRequestModel.toJson(),
       );
-      return right(SignUpResponseBody.fromJson(result));
+      var data = SignUpResponseBody.fromJson(result);
+      SharedPrefHelper.setData(PrefsConstants.token, data.id);
+
+      return right(data);
     } on DioException catch (e) {
       return left(ServerFailure.fromDioException(e));
     } catch (e) {

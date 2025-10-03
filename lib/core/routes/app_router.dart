@@ -21,7 +21,7 @@ class AppRouter {
 
   static GoRouter route = GoRouter(
     routes: [
-      GoRoute(path: '/', builder: (context, state) => SplashView()),
+      GoRoute(path: '/', builder: (context, state) =>  SplashView()),
       GoRoute(path: onBording, builder: (context, state) => OnBordingView()),
       GoRoute(path: uplodaView, builder: (context, state) => UplodaView()),
       GoRoute(path: resultView, builder: (context, state) => ResultView()),

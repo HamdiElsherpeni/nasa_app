@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nasa_app/core/database/my_cache_helper.dart';
 import 'package:nasa_app/core/functions/coustem_navigate.dart';
 import 'package:nasa_app/core/routes/app_router.dart';
 import 'package:nasa_app/core/widgets/coustem_eleveted_butten.dart';
 import 'package:nasa_app/core/widgets/coustem_text_form_filed.dart';
+import 'package:nasa_app/futures/auth/presentation/maneger/sign_in_cubit/sign_in_cubit.dart';
 
 class CustemLogInForm extends StatefulWidget {
   CustemLogInForm({super.key});
@@ -14,32 +15,32 @@ class CustemLogInForm extends StatefulWidget {
 }
 
 class _CustemLogInFormState extends State<CustemLogInForm> {
-  bool password = false;
-  final sinUpFormKey = GlobalKey<FormState>();
+  bool isObscurePassword = false;
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: sinUpFormKey,
+      key: context.read<SingInCubit>().signInFormKey,
       child: Column(
         children: [
           CoustemTextFormFailed(
             leble: 'Email Address',
             hent: 'You@gmail.com',
-            onChanged: (emailAdders) {},
+            controller: context.read<SingInCubit>().emailController,
           ),
           SizedBox(height: 30.h), // متجاوب
           CoustemTextFormFailed(
             leble: 'Password',
             hent: '*********',
-            onChanged: (password) {},
-            obscure: password,
+            controller: context.read<SingInCubit>().passwordController,
+
+            obscure: isObscurePassword,
             sufixIcon: IconButton(
               onPressed: () {
-                password = !password;
+                isObscurePassword = !isObscurePassword;
                 setState(() {});
               },
-              icon: password
+              icon: isObscurePassword
                   ? Icon(Icons.visibility_off, size: 20.sp)
                   : Icon(Icons.visibility, size: 20.sp),
             ),
@@ -63,10 +64,15 @@ class _CustemLogInFormState extends State<CustemLogInForm> {
           CoustemElevetedBoutten(
             text: 'Sign In',
             onPressed: () {
-              coustemNavigatPushReplace(context, AppRouter.homeView);
-              SharedPreferenceManager.saveIsViset(true);
+              if (context
+                  .read<SingInCubit>()
+                  .signInFormKey
+                  .currentState!
+                  .validate()) {
+                context.read<SingInCubit>().emitSignInState();
+              }
             },
-            height: 60.h,    // ارتفاع متجاوب
+            height: 60.h, // ارتفاع متجاوب
             fontSize: 18.sp, // حجم نص متجاوب
           ),
         ],

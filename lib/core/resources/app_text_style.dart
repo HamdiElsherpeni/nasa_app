@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:nasa_app/core/resources/app_colors.dart';
 
 abstract class AppTextStyle {
   static const poppincow200siz20 = TextStyle(

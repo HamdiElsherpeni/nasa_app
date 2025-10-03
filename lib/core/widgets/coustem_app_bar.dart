@@ -45,7 +45,7 @@ class CoustemAppBar extends StatelessWidget {
         SizedBox(height: 5.h),
         Text(
           subTitel,
-         style: (AppTextStyle.poppinsow300siz16 as TextStyle).copyWith(
+         style: (AppTextStyle.poppinsow300siz16).copyWith(
             color: Colors.grey,
           ),
         ),

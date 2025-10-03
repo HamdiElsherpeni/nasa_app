@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:nasa_app/futures/auth/presentation/view/forget_password_view.dart';
-import 'package:nasa_app/futures/auth/presentation/view/log_in_view.dart';
-import 'package:nasa_app/futures/auth/presentation/view/sin_up_view.dart';
+import 'package:nasa_app/futures/auth/presentation/view/sign_in_view.dart';
+import 'package:nasa_app/futures/auth/presentation/view/sign_up_view.dart';
 import 'package:nasa_app/futures/home/presentation/view/home_view.dart';
 import 'package:nasa_app/futures/result/presentation/view/result_view.dart';
 import 'package:nasa_app/futures/setting/presentation/view/setteing_view.dart';
@@ -18,7 +18,6 @@ class AppRouter {
   static const String uplodaView = '/uplodaView';
   static const String resultView = '/resultView';
   static const String settingView = '/settingView';
-  
 
   static GoRouter route = GoRouter(
     routes: [
@@ -28,8 +27,8 @@ class AppRouter {
       GoRoute(path: resultView, builder: (context, state) => ResultView()),
       GoRoute(path: settingView, builder: (context, state) => SetteingView()),
 
-      GoRoute(path: logInView, builder: (context, state) => LogInView()),
-      GoRoute(path: sinUpView, builder: (context, state) => SinUpView()),
+      GoRoute(path: logInView, builder: (context, state) => SignInView()),
+      GoRoute(path: sinUpView, builder: (context, state) => SignUpView()),
       GoRoute(path: homeView, builder: (context, state) => HomeView()),
 
       GoRoute(

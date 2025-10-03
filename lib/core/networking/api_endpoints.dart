@@ -1,8 +1,7 @@
 class ApiEndPoint {
-  static const String baseUrl = 'https://localhost:7109/';
-  static const String sinIn = 'users';
-  static const String sinUp = 'users/register';
-  static const String refrishToken = 'users/register';
+  static const String baseUrl = 'https://exo-ai.runasp.net/';
+  static const String signIn = 'Auth/login';
+  static const String signUp = 'Auth/register';
 }
 
 class ApiKey {

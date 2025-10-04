@@ -1,37 +1,30 @@
-
-import 'dart:convert';
-
 class PredictionRealResponse {
-  final int prediction;       // 0 or 1 (هل كوكب ولا لا)
-  final double probability;   // نسبة الاحتمال
-  final String message;       // رسالة من السيرفر
+  final ProbabilitiesModel probabilities;
 
-  PredictionRealResponse({
-    required this.prediction,
-    required this.probability,
-    required this.message,
-  });
+  PredictionRealResponse({required this.probabilities});
 
   factory PredictionRealResponse.fromJson(Map<String, dynamic> json) {
     return PredictionRealResponse(
-      prediction: json['prediction'] ?? 0,
-      probability: (json['probability'] as num?)?.toDouble() ?? 0.0,
-      message: json['message'] ?? "",
+      probabilities: ProbabilitiesModel.fromJson(json['probabilities']),
     );
   }
-
-  Map<String, dynamic> toJson() {
-    return {
-      "prediction": prediction,
-      "probability": probability,
-      "message": message,
-    };
-  }
-
-  /// Helpers for raw json
-  factory PredictionRealResponse.fromRawJson(String str) =>
-      PredictionRealResponse.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
 }
-  
+
+class ProbabilitiesModel {
+  final num candidate;
+  final num confirmed;
+  final num falsePositive;
+
+  ProbabilitiesModel({
+    required this.candidate,
+    required this.confirmed,
+    required this.falsePositive,
+  });
+  factory ProbabilitiesModel.fromJson(Map<String, dynamic> json) {
+    return ProbabilitiesModel(
+      candidate: json['CANDIDATE'],
+      confirmed: json['CONFIRMED'],
+      falsePositive: json['FALSE POSITIVE'],
+    );
+  }
+}

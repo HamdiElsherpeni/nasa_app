@@ -1,4 +1,3 @@
-import 'dart:convert';
 class PredictionRealRequest {
   final String kepoiName;
   final int koiCount;
@@ -24,21 +23,6 @@ class PredictionRealRequest {
     required this.koiSmetErr2,
   });
 
-  /// fromJson
-  factory PredictionRealRequest.fromJson(Map<String, dynamic> json) {
-    return PredictionRealRequest(
-      kepoiName: json["kepoi_name"] ?? "",
-      koiCount: json["koi_count"] ?? 0,
-      koiDiccoMsky: (json["koi_dicco_msky"] as num?)?.toDouble() ?? 0.0,
-      koiDiccoMskyErr: (json["koi_dicco_msky_err"] as num?)?.toDouble() ?? 0.0,
-      koiMaxMultEv: (json["koi_max_mult_ev"] as num?)?.toDouble() ?? 0.0,
-      koiModelSnr: (json["koi_model_snr"] as num?)?.toDouble() ?? 0.0,
-      koiPrad: (json["koi_prad"] as num?)?.toDouble() ?? 0.0,
-      koiPradErr1: (json["koi_prad_err1"] as num?)?.toDouble() ?? 0.0,
-      koiScore: (json["koi_score"] as num?)?.toDouble() ?? 0.0,
-      koiSmetErr2: (json["koi_smet_err2"] as num?)?.toDouble() ?? 0.0,
-    );
-  }
 
   /// toJson
   Map<String, dynamic> toJson() {
@@ -56,11 +40,6 @@ class PredictionRealRequest {
     };
   }
 
-  /// Raw Json Helpers
-  factory PredictionRealRequest.fromRawJson(String str) =>
-      PredictionRealRequest.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
 }
   
 

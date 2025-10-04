@@ -1,60 +1,90 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nasa_app/core/resources/app_colors.dart';
 import 'package:nasa_app/futures/upload/presentation/view/widgets/coustem_start_classification.dart';
 
+import '../../managers/prediction_real_cubit/prediction_real_cubit.dart';
+
 class CoustemPredectionForm extends StatelessWidget {
-  CoustemPredectionForm({super.key});
-
-  final _formKey = GlobalKey<FormState>();
-
-  final TextEditingController kepoiNameController = TextEditingController();
-  final TextEditingController koiCountController = TextEditingController();
-  final TextEditingController koiDiccoMskyController = TextEditingController();
-  final TextEditingController koiDiccoMskyErrController =
-      TextEditingController();
-  final TextEditingController koiMaxMultEvController = TextEditingController();
-  final TextEditingController koiModelSnrController = TextEditingController();
-  final TextEditingController koiPradController = TextEditingController();
-  final TextEditingController koiPradErr1Controller = TextEditingController();
-  final TextEditingController koiScoreController = TextEditingController();
-  final TextEditingController koiSmetErr2Controller = TextEditingController();
+  const CoustemPredectionForm({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _formKey,
+      key: context.read<PredictionRealCubit>().formKey,
       child: SingleChildScrollView(
-        padding:  EdgeInsets.symmetric(horizontal: 3.h),
+        padding: EdgeInsets.symmetric(horizontal: 3.h),
         child: Container(
           decoration: BoxDecoration(
-        color:AppColors.primaryColor,
-        borderRadius: BorderRadius.circular(16.r),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.3),
-            spreadRadius: 2.r,
-            blurRadius: 10.r,
-            offset: Offset(0, 5.h),
+            color: AppColors.primaryColor,
+            borderRadius: BorderRadius.circular(16.r),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.3),
+                spreadRadius: 2.r,
+                blurRadius: 10.r,
+                offset: Offset(0, 5.h),
+              ),
+            ],
           ),
-        ],
-      ),
           child: Column(
             children: [
-              _buildRowField("Name", kepoiNameController),
-              _buildRowField("Count", koiCountController),
-              _buildRowField("Dicco_msky", koiDiccoMskyController),
-              _buildRowField("Dicco_msky_err", koiDiccoMskyErrController),
-              _buildRowField("Max_mult_ev", koiMaxMultEvController),
-              _buildRowField("Model_snr", koiModelSnrController),
-              _buildRowField("Prad", koiPradController),
-              _buildRowField("Prad_err1", koiPradErr1Controller),
-              _buildRowField("Score", koiScoreController),
-              _buildRowField("Kmet_err2", koiSmetErr2Controller),
+              _buildRowField(
+                "Name",
+                context.read<PredictionRealCubit>().kepoiNameController,
+                keyboardType: TextInputType.name,
+              ),
+              _buildRowField(
+                "Count",
+                context.read<PredictionRealCubit>().koiCountController,
+              ),
+              _buildRowField(
+                "Dicco_msky",
+                context.read<PredictionRealCubit>().koiDiccoMskyController,
+              ),
+              _buildRowField(
+                "Dicco_msky_err",
+                context.read<PredictionRealCubit>().koiDiccoMskyErrController,
+              ),
+              _buildRowField(
+                "Max_mult_ev",
+                context.read<PredictionRealCubit>().koiMaxMultEvController,
+              ),
+              _buildRowField(
+                "Model_snr",
+                context.read<PredictionRealCubit>().koiModelSnrController,
+              ),
+              _buildRowField(
+                "Prad",
+                context.read<PredictionRealCubit>().koiPradController,
+              ),
+              _buildRowField(
+                "Prad_err1",
+                context.read<PredictionRealCubit>().koiPradErr1Controller,
+              ),
+              _buildRowField(
+                "Score",
+                context.read<PredictionRealCubit>().koiScoreController,
+              ),
+              _buildRowField(
+                "Kmet_err2",
+                context.read<PredictionRealCubit>().koiSmetErr2Controller,
+              ),
               const SizedBox(height: 20),
-               CoustemStartClassification(onTap: () {
-                 
-               },),
+              CoustemStartClassification(
+                onTap: () {
+                  if (context
+                      .read<PredictionRealCubit>()
+                      .formKey
+                      .currentState!
+                      .validate()) {
+                    context
+                        .read<PredictionRealCubit>()
+                        .emitPredicationRealState();
+                  }
+                },
+              ),
             ],
           ),
         ),
@@ -63,9 +93,13 @@ class CoustemPredectionForm extends StatelessWidget {
   }
 
   /// جدول: Label + TextField
-  Widget _buildRowField(String label, TextEditingController controller) {
+  Widget _buildRowField(
+    String label,
+    TextEditingController controller, {
+    TextInputType? keyboardType,
+  }) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
       child: Row(
         children: [
           Expanded(
@@ -79,6 +113,7 @@ class CoustemPredectionForm extends StatelessWidget {
           Expanded(
             flex: 7,
             child: TextFormField(
+              keyboardType: keyboardType ?? TextInputType.number,
               controller: controller,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),

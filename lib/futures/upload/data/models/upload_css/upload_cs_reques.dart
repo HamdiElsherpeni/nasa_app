@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 class UploadCsvFileRequest {
   final String filePath; // مكان الملف CSV
   final String fileName; // اسم الملف
-  final bool useCV;      // هل يستخدم cross validation ؟
+  final bool useCV; // هل يستخدم cross validation ؟
 
   UploadCsvFileRequest({
     required this.filePath,
@@ -14,14 +14,8 @@ class UploadCsvFileRequest {
   /// تحويل الـ Data لـ FormData عشان نقدر نرفعه بالـ Dio
   Future<FormData> toFormData() async {
     return FormData.fromMap({
-      'files': [
-        await MultipartFile.fromFile(
-          filePath,
-          filename: fileName,
-        )
-      ],
-      'use_cv': useCV.toString(), // لازم String عشان السيرفر يفهمها
+      'file': await MultipartFile.fromFile(filePath, filename: fileName),
+      'use_cv': useCV.toString(),
     });
   }
 }
-

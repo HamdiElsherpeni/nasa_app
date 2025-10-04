@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nasa_app/core/database/my_cache_helper.dart';
 import 'package:nasa_app/core/database/prefs_constants.dart';
-import 'package:nasa_app/core/functions/coustem_navigate.dart';
-import 'package:nasa_app/core/routes/app_router.dart';
+import 'package:nasa_app/core/functions/navigate_extension.dart';
 import 'package:nasa_app/core/resources/app_assets.dart';
+import 'package:nasa_app/core/routes/routes.dart';
 import 'package:nasa_app/main.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -25,12 +25,11 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     bool isVisit =
         await SharedPrefHelper.getBool(PrefsConstants.onBoarding) ?? false;
     if (isLoggedIn) {
-      delayedNavigation(context, AppRouter.homeView);
+      delayedNavigation(context, Routes.homeView);
     } else {
       isVisit
-          ? delayedNavigation(context, AppRouter.logInView)
-          : delayedNavigation(context, AppRouter.onBording);
-      
+          ? delayedNavigation(context, Routes.logInView)
+          : delayedNavigation(context, Routes.onBoarding);
     }
   }
 
@@ -49,6 +48,6 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
 void delayedNavigation(BuildContext context, String path) {
   Future.delayed(Duration(seconds: 2), () {
-    coustemNavigatPushReplace(context, path);
+    context.pushReplacementNamed(path);
   });
 }

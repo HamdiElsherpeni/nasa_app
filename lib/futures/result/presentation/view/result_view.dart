@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nasa_app/core/resources/constnts.dart';
 import 'package:nasa_app/core/widgets/coustem_drawer.dart';
 import 'package:nasa_app/futures/result/presentation/view/widgets/result_view_body.dart';
 
@@ -8,6 +7,6 @@ class ResultView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(drawer: CoustemDrawer(),key: resultScaffoldKey,body: SafeArea(child: ResultViewBody()),);
+  return Scaffold(drawer: CoustemDrawer(),body: SafeArea(child: ResultViewBody()),);
   }
 }

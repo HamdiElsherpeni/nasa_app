@@ -1,24 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:nasa_app/core/functions/coustem_navigate.dart';
-import 'package:nasa_app/core/routes/app_router.dart';
 import 'package:nasa_app/core/resources/app_colors.dart';
+import 'package:nasa_app/core/routes/routes.dart';
 import 'package:nasa_app/core/widgets/coustem_user_info.dart';
 import 'package:nasa_app/core/widgets/coustem_drawer_disinn.dart';
+import 'package:nasa_app/core/functions/navigate_extension.dart'; // للـ Extensions
 
 class CoustemDrawer extends StatelessWidget {
-  const CoustemDrawer({super.key, context});
+  const CoustemDrawer({super.key});
+
+  void _navigateIfNeeded(BuildContext context, String routeName) {
+  final currentRoute = ModalRoute.of(context)?.settings.name;
+
+  if (currentRoute != routeName) {
+    context.pop(); // يقفل Drawer
+    context.pushNamedAndRemoveUntil(routeName, (route) => false); 
+    // ✅ يمسح الـ stack ويخلي الشاشة دي بس
+  } else {
+    context.pop(); // لو نفس الشاشة → Drawer يتقفل فقط
+  }
+}
 
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(
-      widthFactor: 0.7, // التحكم في نسبة عرض الـ Drawer
+      widthFactor: 0.7,
       child: Drawer(
         backgroundColor: AppColors.primaryColor,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              DrawerHeader(
+              const DrawerHeader(
                 decoration: BoxDecoration(color: AppColors.primaryColor),
                 child: CoustemDrawerDisinghn(text: 'NASA Classifier'),
               ),
@@ -26,57 +38,33 @@ class CoustemDrawer extends StatelessWidget {
               // زر Home
               ListTile(
                 leading: const Icon(Icons.home, color: Colors.white),
-                title: const Text(
-                  "Home",
-                  style: TextStyle(color: Colors.white),
-                ),
-                onTap: () {
-                  // ⬅️ إغلاق الـ Drawer أولاً
-                  coustemNavigatPushReplace(context, AppRouter.homeView);
-                },
+                title: const Text("Home", style: TextStyle(color: Colors.white)),
+                onTap: () => _navigateIfNeeded(context, Routes.homeView),
               ),
 
-              // زر UpLoad
+              // زر Upload
               ListTile(
                 leading: const Icon(Icons.upload, color: Colors.white),
-                title: const Text(
-                  "UpLoad",
-                  style: TextStyle(color: Colors.white),
-                ),
-                onTap: () {
-                  // ⬅️ إغلاق الـ Drawer أولاً
-                  coustemNavigatPushReplace(context, AppRouter.uplodaView);
-                },
+                title: const Text("Upload", style: TextStyle(color: Colors.white)),
+                onTap: () => _navigateIfNeeded(context, Routes.uploadView),
               ),
 
               // زر Result
               ListTile(
-                leading: const Icon(
-                  Icons.bar_chart_outlined,
-                  color: Colors.white,
-                ),
-                title: const Text(
-                  "Result",
-                  style: TextStyle(color: Colors.white),
-                ),
-                onTap: () {
-                  coustemNavigatPushReplace(context, AppRouter.resultView);
-                },
+                leading: const Icon(Icons.bar_chart_outlined, color: Colors.white),
+                title: const Text("Result", style: TextStyle(color: Colors.white)),
+                onTap: () => _navigateIfNeeded(context, Routes.resultView),
               ),
 
-              // زر Setteing
+              // زر Setting
               ListTile(
                 leading: const Icon(Icons.settings, color: Colors.white),
-                title: const Text(
-                  "Setteing",
-                  style: TextStyle(color: Colors.white),
-                ),
-                onTap: () {
-                  coustemNavigatPushReplace(context, AppRouter.settingView);
-                },
+                title: const Text("Setting", style: TextStyle(color: Colors.white)),
+                onTap: () => _navigateIfNeeded(context, Routes.settingView),
               ),
-              Spacer(),
-              CoustemUserInfo(),
+
+              const Spacer(),
+              const CoustemUserInfo(),
             ],
           ),
         ),

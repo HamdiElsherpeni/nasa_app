@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nasa_app/core/functions/coustem_navigate.dart';
-import 'package:nasa_app/core/routes/app_router.dart';
+import 'package:nasa_app/core/functions/navigate_extension.dart';
+import 'package:nasa_app/core/routes/routes.dart';
 
 class DontHaveAccount extends StatelessWidget {
   const DontHaveAccount({super.key});
@@ -20,7 +20,7 @@ class DontHaveAccount extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            coustemNavigatPush(context, AppRouter.sinUpView);
+            context.pushNamed(Routes.signUpView);
           },
           child: Text(
             'Sign Up',

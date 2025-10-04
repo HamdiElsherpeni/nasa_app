@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:nasa_app/core/functions/coustem_navigate.dart';
+import 'package:nasa_app/core/functions/navigate_extension.dart';
 import 'package:nasa_app/core/resources/app_text_style.dart' show AppTextStyle;
-import 'package:nasa_app/core/routes/app_router.dart';
+import 'package:nasa_app/core/routes/routes.dart';
 import 'package:nasa_app/futures/auth/presentation/maneger/sign_up_cubit/sign_up_cubit.dart';
 
 class SignUpBlocListener extends StatelessWidget {
@@ -14,10 +13,10 @@ class SignUpBlocListener extends StatelessWidget {
     return BlocListener<SignUpCubit, SignUpState>(
       listener: (context, state) {
         if (state is SignUpSuccess) {
-          GoRouter.of(context).pop();
-          coustemNavigatPush(context, AppRouter.homeView);
+          context.pop();
+          context.pushNamed(Routes.homeView);
         } else if (state is SignUpFailure) {
-          GoRouter.of(context).pop();
+          context.pop();
           setUpErrorState(context, state.errorMassege);
         } else {
           setUpLoadingState(context);
@@ -51,7 +50,7 @@ void setUpErrorState(context, errMessage) {
         ),
         actions: [
           TextButton(
-            onPressed: () => GoRouter.of(context).pop(),
+            onPressed: () => context.pop(),
             child: Text(
               'فهمت',
               style: AppTextStyle.poppinsow300siz16.copyWith(

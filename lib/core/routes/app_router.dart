@@ -1,4 +1,6 @@
-import 'package:go_router/go_router.dart';
+import 'package:flutter/material.dart';
+import 'package:nasa_app/core/routes/router_transitions.dart';
+import 'package:nasa_app/core/routes/routes.dart';
 import 'package:nasa_app/futures/auth/presentation/view/forget_password_view.dart';
 import 'package:nasa_app/futures/auth/presentation/view/sign_in_view.dart';
 import 'package:nasa_app/futures/auth/presentation/view/sign_up_view.dart';
@@ -10,31 +12,28 @@ import 'package:nasa_app/futures/on_bording/presentation/view/on_bording_view.da
 import 'package:nasa_app/futures/splash/presentation/view/splash_view.dart';
 
 class AppRouter {
-  static const String onBording = '/onBording';
-  static const String logInView = '/logInView';
-  static const String sinUpView = '/sinUpView';
-  static const String forgetPass = '/forgetPass';
-  static const String homeView = '/homeView';
-  static const String uplodaView = '/uplodaView';
-  static const String resultView = '/resultView';
-  static const String settingView = '/settingView';
-
-  static GoRouter route = GoRouter(
-    routes: [
-      GoRoute(path: '/', builder: (context, state) =>  SplashView()),
-      GoRoute(path: onBording, builder: (context, state) => OnBordingView()),
-      GoRoute(path: uplodaView, builder: (context, state) => UplodaView()),
-      GoRoute(path: resultView, builder: (context, state) => ResultView()),
-      GoRoute(path: settingView, builder: (context, state) => SetteingView()),
-
-      GoRoute(path: logInView, builder: (context, state) => SignInView()),
-      GoRoute(path: sinUpView, builder: (context, state) => SignUpView()),
-      GoRoute(path: homeView, builder: (context, state) => HomeView()),
-
-      GoRoute(
-        path: forgetPass,
-        builder: (context, state) => ForgetPasswordView(),
-      ),
-    ],
-  );
+  static Route? onGenerate(RouteSettings settings) {
+    switch (settings.name) {
+      case Routes.splashView:
+        return MaterialPageRoute(builder: (_) => const SplashView());
+      case Routes.onBoarding:
+        return MaterialPageRoute(builder: (_) => const OnBordingView());
+      case Routes.logInView:
+        return MaterialPageRoute(builder: (_) => const SignInView());
+      case Routes.signUpView:
+        return MaterialPageRoute(builder: (_) => const SignUpView());
+      case Routes.forgetPass:
+        return MaterialPageRoute(builder: (_) => const ForgetPasswordView());
+      case Routes.homeView:
+        return RouterTransitions.buildHorizontal(HomeView());
+      case Routes.uploadView:
+        return RouterTransitions.buildHorizontal(const UploadView());
+      case Routes.resultView:
+        return RouterTransitions.buildHorizontal(ResultView());
+      case Routes.settingView:
+        return RouterTransitions.buildHorizontal(SettingView());
+      default:
+        return null;
+    }
+  }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nasa_app/core/functions/coustem_navigate.dart';
-import 'package:nasa_app/core/routes/app_router.dart';
+import 'package:nasa_app/core/functions/navigate_extension.dart';
+import 'package:nasa_app/core/routes/routes.dart';
 import 'package:nasa_app/core/widgets/coustem_eleveted_butten.dart';
 import 'package:nasa_app/core/widgets/coustem_text_form_filed.dart';
 import 'package:nasa_app/futures/auth/presentation/maneger/sign_in_cubit/sign_in_cubit.dart';
@@ -49,7 +49,7 @@ class _CustemLogInFormState extends State<CustemLogInForm> {
             alignment: Alignment.bottomRight,
             child: TextButton(
               onPressed: () {
-                coustemNavigatPush(context, AppRouter.forgetPass);
+                context.pushNamed(Routes.forgetPass);
               },
               child: Text(
                 'Forgot Password ?',

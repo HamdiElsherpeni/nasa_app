@@ -7,7 +7,7 @@ import 'package:nasa_app/futures/auth/presentation/view/sign_up_view.dart';
 import 'package:nasa_app/futures/home/presentation/view/home_view.dart';
 import 'package:nasa_app/futures/result/presentation/view/result_view.dart';
 import 'package:nasa_app/futures/setting/presentation/view/setteing_view.dart';
-import 'package:nasa_app/futures/upload/presentation/view/uploda_view.dart';
+import 'package:nasa_app/futures/upload/presentation/view/upload_view.dart';
 import 'package:nasa_app/futures/on_bording/presentation/view/on_bording_view.dart';
 import 'package:nasa_app/futures/splash/presentation/view/splash_view.dart';
 
@@ -25,13 +25,13 @@ class AppRouter {
       case Routes.forgetPass:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordView());
       case Routes.homeView:
-        return RouterTransitions.buildHorizontal(HomeView());
+        return RouterTransitions.buildFade(HomeView());
       case Routes.uploadView:
         return RouterTransitions.buildHorizontal(const UploadView());
       case Routes.resultView:
-        return RouterTransitions.buildHorizontal(ResultView());
+        return RouterTransitions.buildVertical(ResultView());
       case Routes.settingView:
-        return RouterTransitions.buildHorizontal(SettingView());
+        return RouterTransitions.buildFade(SettingView());
       default:
         return null;
     }

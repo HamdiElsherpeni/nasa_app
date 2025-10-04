@@ -15,8 +15,9 @@ class CoustemResultAppBar extends StatelessWidget {
           titel: 'Classification Results',
           subTitel: 'Analysis results and performance metrics',
         ),
-        SizedBox(height: 10.h),
+        //SizedBox(height: 10.h),
         CoustemAppBarBoutten(),
+        SizedBox(height: 16.h),
       ],
     );
   }

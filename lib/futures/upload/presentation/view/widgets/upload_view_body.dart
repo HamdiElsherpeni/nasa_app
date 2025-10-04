@@ -25,6 +25,7 @@ class UploadViewBody extends StatelessWidget {
           SizedBox(height: 20.h),
           ClassificationParametersWidget(),
           SizedBox(height: 40.h),
+          
 
           CoustemPredectionForm(),
           PredicationRealBlocListener(),

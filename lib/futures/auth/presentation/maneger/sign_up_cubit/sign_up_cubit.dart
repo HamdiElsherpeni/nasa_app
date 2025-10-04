@@ -14,6 +14,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+
   void emitSignUpState() async {
     emit(SignUpLoading());
     var result = await _authRepoImpl.sinUpUser(

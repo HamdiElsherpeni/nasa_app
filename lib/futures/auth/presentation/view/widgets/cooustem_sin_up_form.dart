@@ -30,6 +30,7 @@ class _CoustemSinUpFormState extends State<CoustemSinUpForm> {
               hent: 'Morgan',
               controller: context.read<SignUpCubit>().firstNameController,
               
+              
             ),
             SizedBox(height: 20.h), // متجاوب
             CoustemTextFormFailed(

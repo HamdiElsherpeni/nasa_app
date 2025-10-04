@@ -10,6 +10,7 @@ class UploadCsvCubit extends Cubit<UploadCsvState> {
   final UploadRepoImpl _uploadRepoImpl;
 
   void uploadCsv(UploadCsvFileRequest uploadCsvFileRequest) async {
+      emit(UploadCsvFilePicked(uploadCsvFileRequest.fileName));
     emit(UploadCsvLoading());
     var result = await _uploadRepoImpl.uploadCsv(
       uploadCsvFileRequest: uploadCsvFileRequest,

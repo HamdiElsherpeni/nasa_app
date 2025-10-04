@@ -10,7 +10,10 @@ final class UploadCsvFailure extends UploadCsvState {
   final String message;
   UploadCsvFailure({required this.message});
 }
-
+class UploadCsvFilePicked extends UploadCsvState {
+  final String fileName;
+  UploadCsvFilePicked(this.fileName);
+}
 final class UploadCsvSuccess extends UploadCsvState {
   final UploadCsvFileResponse uploadCsvFileResponse;
   UploadCsvSuccess({required this.uploadCsvFileResponse});

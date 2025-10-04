@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:nasa_app/core/database/my_cache_helper.dart';
 import 'package:nasa_app/core/resources/app_colors.dart';
 import 'package:nasa_app/core/routes/routes.dart';
 import 'package:nasa_app/core/widgets/coustem_user_info.dart';
 import 'package:nasa_app/core/widgets/coustem_drawer_disinn.dart';
-import 'package:nasa_app/core/functions/navigate_extension.dart'; // للـ Extensions
+import 'package:nasa_app/core/functions/navigate_extension.dart';
+import 'package:restart_app/restart_app.dart'; // للـ Extensions
 
 class CoustemDrawer extends StatelessWidget {
   const CoustemDrawer({super.key});
@@ -83,7 +85,13 @@ class CoustemDrawer extends StatelessWidget {
                   "LogOut",
                   style: TextStyle(color: Colors.white),
                 ),
-                onTap: () {},
+                onTap: () async {
+                  // امسح بيانات المستخدم
+                  await SharedPrefHelper.clearAllData();
+
+                  // اعمل Restart للتطبيق
+                  Restart.restartApp();
+                },
               ),
               const Spacer(),
               const CoustemUserInfo(),

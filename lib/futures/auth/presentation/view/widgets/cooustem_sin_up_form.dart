@@ -29,6 +29,7 @@ class _CoustemSinUpFormState extends State<CoustemSinUpForm> {
               leble: 'First Name',
               hent: 'Morgan',
               controller: context.read<SignUpCubit>().firstNameController,
+              
             ),
             SizedBox(height: 20.h), // متجاوب
             CoustemTextFormFailed(
@@ -88,6 +89,7 @@ class _CoustemSinUpFormState extends State<CoustemSinUpForm> {
                 if (context.read<SignUpCubit>().signUpFormKey.currentState!
                     .validate()) {
                   context.read<SignUpCubit>().emitSignUpState();
+                  
                 }
               },
               height: 65.h, // ارتفاع متجاوب

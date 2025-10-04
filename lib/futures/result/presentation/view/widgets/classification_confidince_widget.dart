@@ -22,11 +22,7 @@ class ClassificationConfidenceWidget extends StatelessWidget {
       title: 'False Positive',
       color: const Color(0xFFF44336), // أحمر
     ),
-    ConfidenceLevelModel(
-      confidence: 92.4,
-      title: 'Eclipsing Binary',
-      color: const Color(0xFF2196F3), // أزرق
-    ),
+   
   ];
 
   @override

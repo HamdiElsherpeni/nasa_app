@@ -1,8 +1,6 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nasa_app/futures/result/data/models/confidince_model.dart';
-import 'package:nasa_app/futures/result/data/models/pie_char_data_model.dart';
 
 class ClassificationConfidenceWidget extends StatelessWidget {
   const ClassificationConfidenceWidget({super.key});
@@ -24,11 +22,7 @@ class ClassificationConfidenceWidget extends StatelessWidget {
       title: 'False Positive',
       color: const Color(0xFFF44336), // أحمر
     ),
-    ConfidenceLevelModel(
-      confidence: 92.4,
-      title: 'Eclipsing Binary',
-      color: const Color(0xFF2196F3), // أزرق
-    ),
+   
   ];
 
   @override

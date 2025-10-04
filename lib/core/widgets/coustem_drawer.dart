@@ -1,27 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:nasa_app/core/functions/coustem_navigate.dart';
-import 'package:nasa_app/core/resources/app_assets.dart';
-import 'package:nasa_app/core/routes/app_router.dart';
+import 'package:nasa_app/core/database/my_cache_helper.dart';
 import 'package:nasa_app/core/resources/app_colors.dart';
+import 'package:nasa_app/core/routes/routes.dart';
 import 'package:nasa_app/core/widgets/coustem_user_info.dart';
-import 'package:nasa_app/core/widgets/coutem_circel_image.dart';
-import 'package:nasa_app/futures/auth/presentation/view/widgets/coustem_auth_disighin.dart'; // غير مستخدم هنا
 import 'package:nasa_app/core/widgets/coustem_drawer_disinn.dart';
+import 'package:nasa_app/core/functions/navigate_extension.dart';
+import 'package:restart_app/restart_app.dart'; // للـ Extensions
 
 class CoustemDrawer extends StatelessWidget {
-  const CoustemDrawer({super.key, context});
+  const CoustemDrawer({super.key});
+
+  void _navigateIfNeeded(BuildContext context, String routeName) {
+    final currentRoute = ModalRoute.of(context)?.settings.name;
+
+    if (currentRoute != routeName) {
+      context.pop(); // يقفل Drawer
+      context.pushNamedAndRemoveUntil(routeName, (route) => false);
+      // ✅ يمسح الـ stack ويخلي الشاشة دي بس
+    } else {
+      context.pop(); // لو نفس الشاشة → Drawer يتقفل فقط
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(
-      widthFactor: 0.7, // التحكم في نسبة عرض الـ Drawer
+      widthFactor: 0.7,
       child: Drawer(
         backgroundColor: AppColors.primaryColor,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              DrawerHeader(
+              const DrawerHeader(
                 decoration: BoxDecoration(color: AppColors.primaryColor),
                 child: CoustemDrawerDisinghn(text: 'Exio Ai'),
               ),
@@ -33,23 +44,17 @@ class CoustemDrawer extends StatelessWidget {
                   "Home",
                   style: TextStyle(color: Colors.white),
                 ),
-                onTap: () {
-                  // ⬅️ إغلاق الـ Drawer أولاً
-                  coustemNavigatPushReplace(context, AppRouter.homeView);
-                },
+                onTap: () => _navigateIfNeeded(context, Routes.homeView),
               ),
 
-              // زر UpLoad
+              // زر Upload
               ListTile(
                 leading: const Icon(Icons.upload, color: Colors.white),
                 title: const Text(
-                  "UpLoad",
+                  "Upload",
                   style: TextStyle(color: Colors.white),
                 ),
-                onTap: () {
-                  // ⬅️ إغلاق الـ Drawer أولاً
-                  coustemNavigatPushReplace(context, AppRouter.uplodaView);
-                },
+                onTap: () => _navigateIfNeeded(context, Routes.uploadView),
               ),
 
               // زر Result
@@ -62,24 +67,34 @@ class CoustemDrawer extends StatelessWidget {
                   "Result",
                   style: TextStyle(color: Colors.white),
                 ),
-                onTap: () {
-                  coustemNavigatPushReplace(context, AppRouter.resultView);
-                },
+                onTap: () => _navigateIfNeeded(context, Routes.resultView),
               ),
 
-              // زر Setteing
+              // زر Setting
               ListTile(
                 leading: const Icon(Icons.settings, color: Colors.white),
                 title: const Text(
-                  "Setteing",
+                  "Setting",
                   style: TextStyle(color: Colors.white),
                 ),
-                onTap: () {
-                  coustemNavigatPushReplace(context, AppRouter.settingView);
+                onTap: () => _navigateIfNeeded(context, Routes.settingView),
+              ),
+              ListTile(
+                leading: const Icon(Icons.logout, color: Colors.red),
+                title: const Text(
+                  "LogOut",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () async {
+                  // امسح بيانات المستخدم
+                  await SharedPrefHelper.clearAllData();
+
+                  // اعمل Restart للتطبيق
+                  Restart.restartApp();
                 },
               ),
-              Spacer(),
-              CoustemUserInfo(),
+              const Spacer(),
+              const CoustemUserInfo(),
             ],
           ),
         ),

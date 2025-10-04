@@ -1,13 +1,8 @@
 class ApiEndPoint {
-  static const String baseUrl = 'https://localhost:7109/';
-  static const String sinIn = 'users';
-  static const String sinUp = 'users/register';
-  static const String refrishToken = 'users/register';
-}
-
-class ApiKey {
-  static const String status = 'status';
-  static const String errorMassege = 'ErrorMassege';
-  static const String email = '';
-  static const String password = '';
+  static const String authBaseUrl = 'https://exo-ai.runasp.net/';
+  static const String dataBaseUrl = 'https://exoai-production.up.railway.app/';
+  static const String signIn = 'Auth/login';
+  static const String signUp = 'Auth/register';
+  static const String predictReal = 'predict-real';
+  static const String uploadCsv = 'retrain';
 }

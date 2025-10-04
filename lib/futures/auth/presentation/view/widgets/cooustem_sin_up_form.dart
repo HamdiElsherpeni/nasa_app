@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nasa_app/core/functions/coustem_navigate.dart';
-import 'package:nasa_app/core/routes/app_router.dart';
+
 import 'package:nasa_app/core/widgets/coustem_eleveted_butten.dart';
 import 'package:nasa_app/core/widgets/coustem_text_form_filed.dart';
+import 'package:nasa_app/futures/auth/presentation/maneger/sign_up_cubit/sign_up_cubit.dart';
 
 class CoustemSinUpForm extends StatefulWidget {
   const CoustemSinUpForm({super.key});
@@ -14,13 +15,12 @@ class CoustemSinUpForm extends StatefulWidget {
 
 class _CoustemSinUpFormState extends State<CoustemSinUpForm> {
   bool chced = false;
-  final _sinUpFormKey = GlobalKey<FormState>();
   bool password = false;
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _sinUpFormKey,
+      key: context.read<SignUpCubit>().signUpFormKey,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 8.w), // متجاوب
         child: Column(
@@ -28,25 +28,27 @@ class _CoustemSinUpFormState extends State<CoustemSinUpForm> {
             CoustemTextFormFailed(
               leble: 'First Name',
               hent: 'Morgan',
-              onChanged: (firstName) {},
+              controller: context.read<SignUpCubit>().firstNameController,
+              
+              
             ),
             SizedBox(height: 20.h), // متجاوب
             CoustemTextFormFailed(
               leble: 'Last Name',
               hent: 'Ysry',
-              onChanged: (lastName) {},
+              controller: context.read<SignUpCubit>().lastNameController,
             ),
             SizedBox(height: 20.h),
             CoustemTextFormFailed(
               leble: 'Email Address',
               hent: 'You@gmail.com',
-              onChanged: (emailAdders) {},
+              controller: context.read<SignUpCubit>().emailController,
             ),
             SizedBox(height: 20.h),
             CoustemTextFormFailed(
               leble: 'Password',
               hent: '*********',
-              onChanged: (password) {},
+              controller: context.read<SignUpCubit>().passwordController,
               obscure: password,
               sufixIcon: IconButton(
                 onPressed: () {
@@ -84,10 +86,14 @@ class _CoustemSinUpFormState extends State<CoustemSinUpForm> {
             CoustemElevetedBoutten(
               text: 'Sign Up',
               color: chced == false ? Colors.grey : null,
-              onPressed: chced
-                  ? () => coustemNavigatPush(context, AppRouter.logInView)
-                  : null,
-              height: 65.h,    // ارتفاع متجاوب
+              onPressed: chced == false ? null : () {
+                if (context.read<SignUpCubit>().signUpFormKey.currentState!
+                    .validate()) {
+                  context.read<SignUpCubit>().emitSignUpState();
+                  
+                }
+              },
+              height: 65.h, // ارتفاع متجاوب
               fontSize: 18.sp, // حجم نص متجاوب
             ),
             SizedBox(height: 10.h),

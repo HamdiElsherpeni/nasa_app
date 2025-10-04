@@ -11,8 +11,7 @@ class ClassificationDistributionWidget extends StatelessWidget {
     PieChartDataModel(value: 30, title: 'Confirmed Exoplanets', color: const Color(0xFF4CAF50)), // أخضر
     PieChartDataModel(value: 25, title: 'Planet Candidates', color: const Color(0xFFFFA500)), // برتقالي
     PieChartDataModel(value: 25, title: 'False Positives', color: const Color(0xFFF44336)), // أحمر
-    PieChartDataModel(value: 20, title: 'Eclipsing Binaries', color: const Color(0xFF2196F3)), // أزرق
-  ];
+   ];
 
   @override
   Widget build(BuildContext context) {

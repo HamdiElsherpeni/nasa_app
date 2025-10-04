@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nasa_app/core/database/my_cache_helper.dart';
-import 'package:nasa_app/core/functions/coustem_navigate.dart';
-import 'package:nasa_app/core/routes/app_router.dart';
+import 'package:nasa_app/core/database/prefs_constants.dart';
+import 'package:nasa_app/core/functions/navigate_extension.dart';
+import 'package:nasa_app/core/routes/routes.dart';
 import 'package:nasa_app/core/widgets/coustem_eleveted_butten.dart';
 import 'package:nasa_app/futures/on_bording/data/model/on_bording_model.dart';
 import 'package:nasa_app/futures/on_bording/presentation/view/widgets/on_bording_view_body.dart';
@@ -30,7 +31,7 @@ class _OnBordingViewState extends State<OnBordingView> {
                 child: OnBordingViewBody(
                   controller: _controller,
                   onPageChanged: (index) {
-                    SharedPreferenceManager.saveIsViset(true);
+                    SharedPrefHelper.setData(PrefsConstants.onBoarding, true);
                     setState(() {
                       curintIndex = index;
                     });
@@ -43,7 +44,7 @@ class _OnBordingViewState extends State<OnBordingView> {
                         CoustemElevetedBoutten(
                           text: 'Create Account',
                           onPressed: () {
-                            coustemNavigatPushReplace(context, AppRouter.sinUpView);
+                            context.pushNamed(Routes.signUpView);
                           },
                           height: 50.h, // إضافة ارتفاع متجاوب
                           fontSize: 18.sp, // حجم نص متجاوب
@@ -51,7 +52,7 @@ class _OnBordingViewState extends State<OnBordingView> {
                         SizedBox(height: 12.h),
                         TextButton(
                           onPressed: () {
-                            coustemNavigatPushReplace(context, AppRouter.logInView);
+                            context.pushNamed(Routes.logInView);
                           },
                           child: Text(
                             'LogIn Now',

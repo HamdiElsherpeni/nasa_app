@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nasa_app/core/database/my_cache_helper.dart';
-import 'package:nasa_app/core/functions/coustem_navigate.dart';
-import 'package:nasa_app/core/resources/app_text_style.dart';
-import 'package:nasa_app/core/routes/app_router.dart';
+import 'package:nasa_app/core/database/prefs_constants.dart';
+import 'package:nasa_app/core/functions/navigate_extension.dart';
 import 'package:nasa_app/core/resources/app_assets.dart';
+import 'package:nasa_app/core/resources/app_text_style.dart';
+import 'package:nasa_app/core/routes/routes.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -41,12 +42,16 @@ class _SplashViewBodyState extends State<SplashViewBody>
   }
 
   Future<void> checkVisited() async {
-    bool isVisit = await SharedPreferenceManager.getIsViset() ?? false;
+    bool isVisit =
+        await SharedPrefHelper.getBool(PrefsConstants.onBoarding) ?? false;
+
     Future.delayed(const Duration(seconds: 3), () {
-      if (isVisit) {
-        coustemNavigatPushReplace(context, AppRouter.logInView);
+      if (isLoggedIn) {
+        context.pushReplacementNamed(Routes.homeView);
       } else {
-        coustemNavigatPushReplace(context, AppRouter.onBording);
+        isVisit
+            ? context.pushReplacementNamed(Routes.logInView)
+            : context.pushReplacementNamed(Routes.onBoarding);
       }
     });
   }
@@ -67,7 +72,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
           ScaleTransition(
             scale: _scaleAnimation,
             child: Image.asset(
-              Assets.assetsImagesPlant,
+              Assets.assetsImagesSplashImage,
               width: 250.w,
               height: 250.h,
               fit: BoxFit.contain,

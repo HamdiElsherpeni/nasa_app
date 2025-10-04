@@ -12,8 +12,7 @@ class PredictionSummaryList extends StatelessWidget {
       {'count': 3421, 'label': 'Confirmed Exoplanets', 'color': const Color(0xFF4CAF50), 'icon': Icons.check},
       {'count': 2847, 'label': 'Planet Candidates', 'color': const Color(0xFFE4AD1E), 'icon': Icons.help_outline},
       {'count': 4129, 'label': 'False Positives', 'color': const Color(0xFFF44336), 'icon': Icons.close},
-      {'count': 2450, 'label': 'New Discoveries', 'color': const Color(0xFF2196F3), 'icon': Icons.star},
-    ];
+      ];
 
     return Container(
       width: double.infinity,

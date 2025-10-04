@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nasa_app/core/widgets/coustem_app_bar.dart';
 import 'package:nasa_app/futures/result/presentation/view/widgets/classification_confidince_widget.dart';
 import 'package:nasa_app/futures/result/presentation/view/widgets/classification_distribution_widget.dart';
-import 'package:nasa_app/futures/result/presentation/view/widgets/coustem_app_bar_boutten.dart';
 import 'package:nasa_app/futures/result/presentation/view/widgets/coustem_prediction_summaryl_list.dart';
 import 'package:nasa_app/futures/result/presentation/view/widgets/coustem_result_app_bar.dart';
 import 'package:nasa_app/futures/result/presentation/view/widgets/light_curvr_chart.dart';

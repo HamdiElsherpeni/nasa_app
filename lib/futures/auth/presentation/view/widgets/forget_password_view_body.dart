@@ -14,13 +14,19 @@ class ForgetPasswordViewBody extends StatelessWidget {
         children: [
           SizedBox(height: 20.h),
           Text(
-            'write your email address and we will send you a link to reset your password',
+            'Write your email address and we will send you a link to reset your password',
             style: TextStyle(color: Colors.grey),
           ),
           SizedBox(height: 16.h),
-          CoustemTextFormFailed(hent: 'You@gmail.com', leble: 'Email Address'),
+          CoustemTextFormFailed(
+            hent: 'You@gmail.com',
+            leble: 'Email Address',
+          ),
           Spacer(),
-          CoustemElevetedBoutten(text: 'Send', onPressed: () {}),
+          CoustemElevetedBoutten(
+            text: 'Send',
+            onPressed: () {},
+          ),
           SizedBox(height: 40.h),
         ],
       ),

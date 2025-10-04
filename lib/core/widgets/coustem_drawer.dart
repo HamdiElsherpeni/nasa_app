@@ -23,7 +23,7 @@ class CoustemDrawer extends StatelessWidget {
             children: [
               DrawerHeader(
                 decoration: BoxDecoration(color: AppColors.primaryColor),
-                child: CoustemDrawerDisinghn(text: 'NASA Classifier'),
+                child: CoustemDrawerDisinghn(text: 'Exio Ai'),
               ),
 
               // زر Home

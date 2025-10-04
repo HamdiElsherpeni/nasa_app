@@ -7,6 +7,8 @@ import 'package:nasa_app/futures/auth/presentation/view/sign_up_view.dart';
 import 'package:nasa_app/futures/home/presentation/view/home_view.dart';
 import 'package:nasa_app/futures/result/presentation/view/result_view.dart';
 import 'package:nasa_app/futures/setting/presentation/view/setteing_view.dart';
+import 'package:nasa_app/futures/upload/data/models/upload_css/upload_csv_response.dart';
+import 'package:nasa_app/futures/upload/data/models/upload_predect_real/upload_predect_real_response.dart';
 import 'package:nasa_app/futures/upload/presentation/view/upload_view.dart';
 import 'package:nasa_app/futures/on_bording/presentation/view/on_bording_view.dart';
 import 'package:nasa_app/futures/splash/presentation/view/splash_view.dart';
@@ -29,7 +31,13 @@ class AppRouter {
       case Routes.uploadView:
         return RouterTransitions.buildHorizontal(const UploadView());
       case Routes.resultView:
-        return RouterTransitions.buildVertical(ResultView());
+        return RouterTransitions.buildVertical(
+          ResultView(
+            uploadCsvFileResponse: settings.arguments as UploadCsvFileResponse,
+            predictionRealResponse:
+                settings.arguments as PredictionRealResponse,
+          ),
+        );
       case Routes.settingView:
         return RouterTransitions.buildFade(SettingView());
       default:

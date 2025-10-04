@@ -1,30 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nasa_app/futures/upload/data/models/upload_css/upload_csv_request.dart';
+import 'package:nasa_app/futures/upload/presentation/managers/upload_csv_cubit/upload_csv_cubit.dart';
 
 class CsvUploadWidget extends StatelessWidget {
   const CsvUploadWidget({super.key});
 
-  void _pickFile() async {
-    try {
-      FilePickerResult? result = await FilePicker.platform.pickFiles(
-        type: FileType.custom,
-        allowedExtensions: ['csv', 'tsv'],
-        allowMultiple: true,
+ void _pickFile(BuildContext context) async {
+  try {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['csv', 'tsv'],
+      allowMultiple: false,
+    );
+
+    if (result != null && result.files.single.path != null) {
+      final file = result.files.single;
+      final request = UploadCsvFileRequest(
+        filePath: file.path!,
+        fileName: file.name,
       );
 
-      if (result != null) {
-        for (var file in result.files) {
-          print('Selected File: ${file.name}, Path: ${file.path}');
-        }
-      } else {
-        print('File selection cancelled.');
-      }
-    } catch (e) {
-      print('Error picking file: $e');
+      // لازم تبعت للـ Cubit
+      context.read<UploadCsvCubit>().uploadCsv(request);
+    } else {
+      print('File selection cancelled.');
     }
+  } catch (e) {
+    print('Error picking file: $e');
   }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +97,9 @@ class CsvUploadWidget extends StatelessWidget {
               ),
               SizedBox(height: 25.h),
               GestureDetector(
-                onTap: _pickFile,
+                onTap: (){
+                  _pickFile(context);
+                },
                 child: Container(
                   padding: EdgeInsets.symmetric(
                     horizontal: 30.w,

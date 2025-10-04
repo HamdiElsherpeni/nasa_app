@@ -5,10 +5,14 @@ import 'package:nasa_app/futures/result/presentation/view/widgets/classification
 import 'package:nasa_app/futures/result/presentation/view/widgets/coustem_prediction_summaryl_list.dart';
 import 'package:nasa_app/futures/result/presentation/view/widgets/coustem_result_app_bar.dart';
 import 'package:nasa_app/futures/result/presentation/view/widgets/light_curvr_chart.dart';
+import 'package:nasa_app/futures/upload/data/models/result_argument/result_argument.dart';
 
 class ResultViewBody extends StatelessWidget {
-  const ResultViewBody({super.key});
-
+  const ResultViewBody({
+    super.key,
+    required this.resultArguments,
+  });
+  final ResultArguments resultArguments;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,10 +32,8 @@ class ResultViewBody extends StatelessWidget {
 
           SliverToBoxAdapter(child: SizedBox(height: 10.h)),
           SliverToBoxAdapter(child: LightCurveChart()),
-
         ],
       ),
     );
   }
 }
-

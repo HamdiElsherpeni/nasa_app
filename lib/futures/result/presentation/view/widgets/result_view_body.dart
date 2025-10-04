@@ -5,10 +5,17 @@ import 'package:nasa_app/futures/result/presentation/view/widgets/classification
 import 'package:nasa_app/futures/result/presentation/view/widgets/coustem_prediction_summaryl_list.dart';
 import 'package:nasa_app/futures/result/presentation/view/widgets/coustem_result_app_bar.dart';
 import 'package:nasa_app/futures/result/presentation/view/widgets/light_curvr_chart.dart';
+import 'package:nasa_app/futures/upload/data/models/upload_css/upload_csv_response.dart';
+import 'package:nasa_app/futures/upload/data/models/upload_predect_real/upload_predect_real_response.dart';
 
 class ResultViewBody extends StatelessWidget {
-  const ResultViewBody({super.key});
-
+  const ResultViewBody({
+    super.key,
+    this.uploadCsvFileResponse,
+    this.predictionRealResponse,
+  });
+  final UploadCsvFileResponse? uploadCsvFileResponse;
+  final PredictionRealResponse? predictionRealResponse;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,10 +35,8 @@ class ResultViewBody extends StatelessWidget {
 
           SliverToBoxAdapter(child: SizedBox(height: 10.h)),
           SliverToBoxAdapter(child: LightCurveChart()),
-
         ],
       ),
     );
   }
 }
-

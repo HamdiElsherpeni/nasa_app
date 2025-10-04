@@ -5,6 +5,7 @@ import 'package:nasa_app/futures/upload/presentation/view/widgets/coustem_clssif
 import 'package:nasa_app/futures/upload/presentation/view/widgets/coustem_cv_uplod_card.dart';
 import 'package:nasa_app/futures/upload/presentation/view/widgets/coustem_predection_form.dart';
 import 'package:nasa_app/futures/upload/presentation/view/widgets/predication_real_bloc_listener.dart';
+import 'package:nasa_app/futures/upload/presentation/view/widgets/upload_csv_bloc_listener.dart';
 
 class UploadViewBody extends StatelessWidget {
   const UploadViewBody({super.key});
@@ -22,6 +23,7 @@ class UploadViewBody extends StatelessWidget {
                 'Upload CSV files containing Kepler telescope transit data for classification',
           ),
           CsvUploadWidget(),
+          UploadCsvBlocListener(),
           SizedBox(height: 20.h),
           ClassificationParametersWidget(),
           SizedBox(height: 40.h),

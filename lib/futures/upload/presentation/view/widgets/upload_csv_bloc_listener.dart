@@ -3,22 +3,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nasa_app/core/functions/navigate_extension.dart';
 import 'package:nasa_app/core/routes/routes.dart';
 import 'package:nasa_app/futures/auth/presentation/view/widgets/sign_up_bloc_listener.dart';
-import 'package:nasa_app/futures/upload/presentation/managers/prediction_real_cubit/prediction_real_cubit.dart';
+import 'package:nasa_app/futures/upload/presentation/managers/upload_csv_cubit/upload_csv_cubit.dart';
 
-class PredicationRealBlocListener extends StatelessWidget {
-  const PredicationRealBlocListener({super.key});
+class UploadCsvBlocListener extends StatelessWidget {
+  const UploadCsvBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<PredictionRealCubit, PredictionRealState>(
+    return BlocListener<UploadCsvCubit, UploadCsvState>(
       listener: (context, state) {
-        if (state is PredictionRealSuccess) {
+        if (state is UploadCsvSuccess) {
           context.pop();
-          context.pushNamed(
-            Routes.resultView,
-            arguments: state.predictionRealResponse,
-          );
-        } else if (state is PredictionRealFailure) {
+          context.pushNamed(Routes.resultView, arguments: state.uploadCsvFileResponse);
+        } else if (state is UploadCsvFailure) {
           context.pop();
           setUpErrorState(context, state.message);
         } else {

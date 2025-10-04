@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:nasa_app/core/networking/api_endpoints.dart';
 import 'package:nasa_app/core/networking/api_failure.dart';
 import 'package:nasa_app/core/networking/api_services.dart';
-import 'package:nasa_app/futures/upload/data/models/upload_css/upload_cs_reques.dart';
+import 'package:nasa_app/futures/upload/data/models/upload_css/upload_csv_request.dart';
 import 'package:nasa_app/futures/upload/data/models/upload_css/upload_csv_response.dart';
 import 'package:nasa_app/futures/upload/data/models/upload_predect_real/upload_predect_real_request.dart';
 import 'package:nasa_app/futures/upload/data/models/upload_predect_real/upload_predect_real_response.dart';

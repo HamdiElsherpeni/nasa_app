@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nasa_app/core/widgets/coustem_app_bar.dart';
 import 'package:nasa_app/futures/upload/presentation/view/widgets/coustem_clssification_parametters.dart';
 import 'package:nasa_app/futures/upload/presentation/view/widgets/coustem_cv_uplod_card.dart';
+import 'package:nasa_app/futures/upload/presentation/view/widgets/coustem_predection_form.dart';
 
 class UploadViewBody extends StatelessWidget {
   const UploadViewBody({super.key});
@@ -22,8 +23,9 @@ class UploadViewBody extends StatelessWidget {
           CsvUploadWidget(),
           SizedBox(height: 20.h,),
           ClassificationParametersWidget(),
-          SizedBox(height: 20.h,),
+          SizedBox(height: 40.h,),
           
+        CoustemPredectionForm()
 
         ],
       ),

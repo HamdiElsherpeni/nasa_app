@@ -6,6 +6,7 @@ import 'package:nasa_app/core/functions/navigate_extension.dart';
 import 'package:nasa_app/core/resources/app_assets.dart';
 import 'package:nasa_app/core/resources/app_text_style.dart';
 import 'package:nasa_app/core/routes/routes.dart';
+import 'package:nasa_app/main.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
